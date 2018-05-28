@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
- //test comment
+ //test comment.
 
         new Handler().postDelayed(new Runnable() {
             @Override
