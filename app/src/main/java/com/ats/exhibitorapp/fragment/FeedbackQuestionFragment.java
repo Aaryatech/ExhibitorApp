@@ -37,7 +37,7 @@ public class FeedbackQuestionFragment extends Fragment {
         ratingBar = view.findViewById(R.id.ratingBar);
         edRemark = view.findViewById(R.id.edRemark);
 
-        final int index = getArguments().getInt(ARG_SECTION_NUMBER);
+    //    final int index = getArguments().getInt(ARG_SECTION_NUMBER);
 
         try {
             question = quetionList.get(index - 1);
