@@ -3,6 +3,7 @@ package com.ats.exhibitorapp.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 import com.ats.exhibitorapp.R;
 import com.ats.exhibitorapp.model.FeedbackQuestionModel;
 
-import java.util.ArrayList;
+import static com.ats.exhibitorapp.fragment.EventInfoFragment.quetionList;
 
 public class FeedbackQuestionFragment extends Fragment {
 
@@ -25,7 +26,6 @@ public class FeedbackQuestionFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public static ArrayList<FeedbackQuestionModel> quetionList = new ArrayList<>();
     public static int index = 0;
 
     @Override
@@ -37,8 +37,10 @@ public class FeedbackQuestionFragment extends Fragment {
         ratingBar = view.findViewById(R.id.ratingBar);
         edRemark = view.findViewById(R.id.edRemark);
 
-    //    final int index = getArguments().getInt(ARG_SECTION_NUMBER);
+        Log.e("Feedback","------------------------FeedbackQuestionFragment");
 
+        final int index = getArguments().getInt(ARG_SECTION_NUMBER);
+        Log.e("Feedback","------------------------INDEX : "+index);
         try {
             question = quetionList.get(index - 1);
             if (question != null) {

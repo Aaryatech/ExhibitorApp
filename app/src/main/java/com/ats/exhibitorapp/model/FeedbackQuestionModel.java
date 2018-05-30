@@ -5,6 +5,11 @@ public class FeedbackQuestionModel {
     private int id;
     private String question;
 
+    public FeedbackQuestionModel(int id, String question) {
+        this.id = id;
+        this.question = question;
+    }
+
     public int getId() {
         return id;
     }

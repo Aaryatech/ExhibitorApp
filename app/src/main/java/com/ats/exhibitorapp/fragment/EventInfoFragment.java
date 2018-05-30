@@ -11,6 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ats.exhibitorapp.R;
+import com.ats.exhibitorapp.model.FeedbackQuestionModel;
+
+import java.util.ArrayList;
 
 public class EventInfoFragment extends Fragment implements View.OnClickListener {
 
@@ -18,10 +21,13 @@ public class EventInfoFragment extends Fragment implements View.OnClickListener 
     private ImageView ivEventImage;
     private TextView tvEventName, tvEventDate, tvEventPlace, tvEventDesc, tvEventContactPerson, tvEventMobile, tvEventEmail;
 
+    public static ArrayList<FeedbackQuestionModel> quetionList = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_info, container, false);
+        getActivity().setTitle("Event");
 
         llFloorMap = view.findViewById(R.id.llFloorMap);
         llEnquiry = view.findViewById(R.id.llEnquiry);
@@ -41,6 +47,18 @@ public class EventInfoFragment extends Fragment implements View.OnClickListener 
         llEnquiry.setOnClickListener(this);
         llFloorMap.setOnClickListener(this);
 
+        FeedbackQuestionModel model1 = new FeedbackQuestionModel(1, "Innovation");
+        FeedbackQuestionModel model2 = new FeedbackQuestionModel(2, "Information Delivery");
+        FeedbackQuestionModel model3 = new FeedbackQuestionModel(3, "Presentation");
+        FeedbackQuestionModel model4 = new FeedbackQuestionModel(4, "Ue of Technology");
+
+        quetionList.clear();
+        quetionList.add(model1);
+        quetionList.add(model2);
+        quetionList.add(model3);
+        quetionList.add(model4);
+
+
         return view;
     }
 
@@ -49,9 +67,19 @@ public class EventInfoFragment extends Fragment implements View.OnClickListener 
         if (v.getId() == R.id.llFloorMap) {
 
         } else if (v.getId() == R.id.llEnquiry) {
-
+            Fragment adf = new VisitorSearchFragment();
+            Bundle args = new Bundle();
+            args.putInt("eventId", 1);
+            args.putString("type", "Enquiry");
+            adf.setArguments(args);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, adf, "EventDetailFragment").commit();
         } else if (v.getId() == R.id.llFeedback) {
-
+            Fragment adf = new VisitorSearchFragment();
+            Bundle args = new Bundle();
+            args.putInt("eventId", 1);
+            args.putString("type", "Feedback");
+            adf.setArguments(args);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, adf, "EventDetailFragment").commit();
         }
     }
 }
