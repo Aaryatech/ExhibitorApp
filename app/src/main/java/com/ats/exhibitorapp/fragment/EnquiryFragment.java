@@ -23,6 +23,7 @@ public class EnquiryFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_enquiry, container, false);
+        getActivity().setTitle("Enquiry");
 
         tvDate = view.findViewById(R.id.tvDate);
         tvTime = view.findViewById(R.id.tvTime);

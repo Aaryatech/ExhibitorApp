@@ -1,6 +1,8 @@
 package com.ats.exhibitorapp.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ats.exhibitorapp.R;
+import com.ats.exhibitorapp.activity.HomeActivity;
+import com.ats.exhibitorapp.fragment.EventInfoFragment;
+import com.ats.exhibitorapp.fragment.EventsFragment;
 import com.ats.exhibitorapp.model.EventModel;
 import com.squareup.picasso.Picasso;
 
@@ -71,14 +76,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
             @Override
             public void onClick(View v) {
 
+                HomeActivity activity = (HomeActivity) context;
 
-//                LoginActivity activity = (LoginActivity) context;
-
-//                Fragment adf = new EventsFragment();
-//                Bundle args = new Bundle();
-//                args.putInt("eventId", model.getEventId());
-//                adf.setArguments(args);
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, adf, "HomeFragment").commit();
+                Fragment adf = new EventInfoFragment();
+                Bundle args = new Bundle();
+                args.putInt("eventId", model.getEventId());
+                adf.setArguments(args);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, adf, "EventsFragment").commit();
             }
         });
 

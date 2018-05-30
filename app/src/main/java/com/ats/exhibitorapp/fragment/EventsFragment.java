@@ -27,6 +27,7 @@ public class EventsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
+        getActivity().setTitle("Events");
 
         recyclerView = view.findViewById(R.id.recyclerView);
 

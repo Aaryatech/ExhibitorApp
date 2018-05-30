@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import android.widget.Button;
 
 import com.ats.exhibitorapp.R;
 
-import static com.ats.exhibitorapp.fragment.FeedbackQuestionFragment.quetionList;
+import static com.ats.exhibitorapp.fragment.EventInfoFragment.quetionList;
 
 public class FeedbackFragment extends Fragment {
 
@@ -29,20 +30,29 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
+        getActivity().setTitle("Feedback");
 
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewPager);
         btnSubmit = view.findViewById(R.id.btnSubmit);
 
+        Log.e("QUESTIONS : ","--------------"+quetionList);
+        no = quetionList.size();
+
         viewPager.setAdapter(new SectionsPagerAdapter(getChildFragmentManager()));
 
-        no = quetionList.size();
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout.setupWithViewPager(viewPager);
+            }
+        });
+
 
         return view;
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        Context context;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
